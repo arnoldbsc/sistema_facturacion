@@ -1,7 +1,8 @@
 import React from 'react';
 import { Link } from "react-router-dom";
 import { useMediaQuery } from 'react-responsive'
-import {fontSecondaryColor} from '../colors.js';
+import {fontSecondaryColor} from '../colors.js'
+import { setAuth } from '../pages/authData.js';
 
 const style = {
     link: {
@@ -23,13 +24,18 @@ function CustomLink (props){
     const isDesktopOrLaptop = useMediaQuery({
         query: '(min-device-width: 700px)'
     })
+    const isClicked = () =>{
+        if(props.children === 'Logout'){
+            setAuth(false)
+        }
+    }
     let textDisplay = 'none'
     if(isDesktopOrLaptop){
         textDisplay = 'inline'
     }
     return(
         <li style={{width: '100%'}}>
-            <Link style={style.link} to={props.children}>
+            <Link onClick={isClicked} style={style.link} to={props.children}>
                 <img style={style.icon} src={props.icon} alt="Bar"/>
                 <span style={{display: textDisplay}}>{props.children}</span>
             </Link>
