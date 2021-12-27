@@ -8,13 +8,14 @@ import Stock from '../icons/stock.svg';
 import Logout from '../icons/logout.svg';
 import { useMediaQuery } from 'react-responsive'
 import {secondaryBackgroudColor} from '../colors.js';
+import InfiniteScroll from 'react-infinite-scroll-component'
 
 const desktopStyle = {
     navBar: {
         position: 'fixed',
         backgroundColor: secondaryBackgroudColor,
         width: '11.5rem',
-        height: '100vh'
+        height: 'calc(100% - 2rem)'
     },
     navBarNav: {
         listStyle: 'none',
@@ -52,9 +53,9 @@ function Navbar(){
         inStyle = desktopStyle
     }
     return(
-        <nav style={inStyle.navBar}>
+        <InfiniteScroll height={inStyle.navBar.height} dataLength={8} style={inStyle.navBar}>
             <ul style={inStyle.navBarNav}>
-                
+                <h2 style={{textAlign:'center', margin:'0', marginTop:'1.5rem'}}>Bienvenido</h2>
                 <CustomLink icon={Users}>Usuarios</CustomLink>
                 <CustomLink icon={Client}>Clientes</CustomLink>
                 <CustomLink icon={Product}>Productos</CustomLink>
@@ -62,7 +63,7 @@ function Navbar(){
                 <CustomLink icon={Stock}>Stock</CustomLink>
                 <CustomLink icon={Logout}>Logout</CustomLink>
             </ul>
-        </nav>
+        </InfiniteScroll>
     )
 }
 

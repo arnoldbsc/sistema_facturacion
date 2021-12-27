@@ -1,8 +1,6 @@
 import React from 'react'
 import {secondaryBackgroudColor, primaryBackgroudColor} from '../colors'
 
-const inline = 'https://jsonbox.io/box_3fad829cf86d1069c94d'
-
 const style = {
     textBox: {
         width: '100%',
@@ -17,15 +15,29 @@ const style = {
 }
 
 export default class Form extends React.Component{
-    render(){
-        const listItems = this.props.initialData.map((data) =>
-        <div key={data._id}>
-            <h4 style={style.title}>{data.title}</h4>
-            <input type={data.type} style={style.textBox} value={data.value}></input>
-        </div>
+    constructor(props) {
+        super(props);
+        this.state = {data: props.initialData};
+    }
+
+    render() {
+        const listItems = this.props.initialData.map((deployData) =>
+            <div key={deployData._id}>
+                <h4 style={style.title}>{deployData.title}</h4>
+                <input onChange={(event) => {
+                        this.setState({data: {...this.state.data, [deployData._id]:{...this.state.data[deployData._id], value: event.target.value}}})
+                    }} 
+                    type={deployData.type}
+                    pattern={deployData.pattern}
+                    title= {deployData.message}
+                    style={style.textBox}
+                    value={deployData.value}
+                    required={'required'}>
+                </input>
+            </div>
         );
         return (
-            <form action={'/'}>{listItems}</form>
+            <form onSubmit={this.props.onSubmit(this.state.data)}>{listItems}</form>
         );
     }
 }
