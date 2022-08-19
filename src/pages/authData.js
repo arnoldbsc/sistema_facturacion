@@ -1,5 +1,5 @@
-let isAuth = false
-const JSONBOX_URL = 'https://60b7d7ecb54b0a0017c02c06.mockapi.io/'
+let isAuth = true
+const JSONBOX_URL = 'https://60c590fcec8ef800175e13a9.mockapi.io/'
 const setAuth = (value) => {
     isAuth = value
 }

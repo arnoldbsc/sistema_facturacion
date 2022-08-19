@@ -3,7 +3,7 @@ import Header from '../component/header';
 import NavBar from '../component/navBar';
 import Content from '../component/content';
 import axios from 'axios';
-import { Redirect } from 'react-router'
+import { Navigate } from 'react-router'
 import {isAuth, JSONBOX_URL} from './authData';
 
 export default class Products extends React.Component{
@@ -49,7 +49,7 @@ export default class Products extends React.Component{
             }
         }
         else{
-            return <Redirect to='/'/>
+            return <Navigate to='/'/>
         }
     }
 }

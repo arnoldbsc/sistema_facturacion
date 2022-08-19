@@ -1,7 +1,7 @@
 import React from 'react';
 import {
     BrowserRouter as Router,
-    Switch,
+    Routes,
     Route,
   } from "react-router-dom";
 
@@ -15,16 +15,16 @@ import NotFound from '../pages/notFound.jsx';
 
 const AppRouter = () => (
     <Router>
-        <Switch>
-            <Route path='/Usuarios' component={Users}/>
-            <Route path='/Clientes' component={Clients}/>
-            <Route path='/Productos' component={Products}/>
-            <Route path='/Facturas' component={Invoices}/>
-            <Route path='/Stock' component={Stock}/>
-            <Route path='/Logout' component={Login}/>
-            <Route path='/' component={Login}/>
-            <Route component={NotFound}/>
-        </Switch>
+        <Routes>
+            <Route exact path='/Usuarios' element={<Users/>}/>
+            <Route exact path='/Clientes' element={<Clients/>}/>
+            <Route exact path='/Productos' element={<Products/>}/>
+            <Route exact path='/Facturas' element={<Invoices/>}/>
+            <Route exact path='/Stock' element={<Stock/>}/>
+            <Route exact path='/Logout' element={<Login/>}/>
+            <Route exact path='/' element={<Login/>}/>
+            <Route path='+' element={<NotFound/>}/>
+        </Routes>
     </Router>
 );
 

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Redirect } from 'react-router'
+import { Navigate } from 'react-router'
 import Content from '../component/content'
 import Form from '../component/form'
 import axios from 'axios'
@@ -60,7 +60,7 @@ export default class Login extends React.Component{
     }
     render() {
         if(this.state.log){
-            return <Redirect to='/usuarios'/>
+            return <Navigate to='/usuarios'/>
         }
         return (
             <Content>

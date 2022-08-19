@@ -5,7 +5,7 @@ import Content from '../component/content'
 import Form from '../component/form'
 import ShowOrInsert from '../component/showOrInsert'
 import axios from 'axios'
-import { Redirect } from 'react-router'
+import { Navigate } from 'react-router'
 import {isAuth, JSONBOX_URL} from './authData';
 
 const data = [
@@ -110,7 +110,7 @@ export default class Clients extends React.Component{
             )
         }
         else{
-            return <Redirect to='/'/>
+            return <Navigate to='/'/>
         }
     }
 }
